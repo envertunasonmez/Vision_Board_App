@@ -4,6 +4,7 @@ import 'package:vision_board_app/cubit/image_scale_cubit.dart';
 import 'package:vision_board_app/products/constants/asset_constants.dart';
 import 'package:vision_board_app/products/constants/color_constants.dart';
 import 'package:vision_board_app/products/constants/string_constans.dart';
+import 'package:vision_board_app/views/vision_board/vision_board_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -13,23 +14,23 @@ class HomeView extends StatelessWidget {
     return BlocProvider(
       create: (_) {
         final cubit = ImageScaleCubit();
-        cubit.startContinuousAnimation(); 
+        cubit.startContinuousAnimation();
         return cubit;
       },
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70), 
+          preferredSize: Size.fromHeight(70),
           child: Container(
             decoration: BoxDecoration(
-              color: ColorConstants.redColor, 
+              color: ColorConstants.redColor,
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20), 
-                bottomRight: Radius.circular(20), 
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
             ),
             child: AppBar(
-              backgroundColor: Colors.transparent, 
-              elevation: 0, 
+              backgroundColor: Colors.transparent,
+              elevation: 0,
               title: Center(
                 child: Text(
                   StringConstans.createVisionBoard,
@@ -66,6 +67,11 @@ class HomeView extends StatelessWidget {
               SizedBox(height: 100),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VisionBoardView(),
+                      ));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorConstants.redColor,
